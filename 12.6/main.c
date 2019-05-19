@@ -6,29 +6,33 @@
 C PrimerPlus
 Chapter12.5
 100个1-10的随机数  并以降序排列
+Chapter12.6
+统计随机数0-10  各个数字出现的次数  使用rand()  于 srand()函数
+
 
 */
 char invertSort(int *data,int num);   //简单的冒泡排序
+int statisticData(int *data,int dataNum,int findData);
 void main(void)
 {
-    int arr[100] = {0};
-
+    int arr[1000] = {0};
+    int dataNum[10] = {0};  //统计0-9  各个数字出现的次数
+    int i;
     for(int i=0;i<(sizeof(arr)/sizeof(int));i++)  {
         arr[i] =  (rand()%10);
     }
-    
-    invertSort(arr,(sizeof(arr)/sizeof(int)));
 
-    for(int i=0;i<(sizeof(arr)/sizeof(int));i++)   
+    for(i=0;i<10;i++)
     {
-        printf("%d  ",arr[i]);
-        if(i%8==7)
-            printf("\r\n");
+        dataNum[i] = statisticData(arr,(sizeof(arr)/sizeof(int)),i);
+        printf("Num %d appear %d times. \n",i,dataNum[i]);
     }
     
 
 
 
+
+    
 
 }
 
@@ -58,4 +62,20 @@ char invertSort(int *data,int num)   //简单的冒泡排序  降序
     }
     return 1;
 }
+
+/*
+统计数组中  该数字出现的次数
+*/
+int statisticData(int *data,int dataNum,int findData)
+{
+    int ret = 0;
+    for(int i=0;i<dataNum;i++)
+    {
+        if(findData==*(data+i))
+            ret++;
+    }
+
+    return ret;
+}
+
 
