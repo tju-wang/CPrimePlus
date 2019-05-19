@@ -34,12 +34,6 @@ void main(void)
         dataNum[i] = statisticData(arr,(sizeof(arr)/sizeof(int)),i);
         printf("Num %d appear %d times. \n",i,dataNum[i]);
     }
-    
-
-
-
-
-    
 
 }
 
