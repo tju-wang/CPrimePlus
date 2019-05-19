@@ -1,13 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <time.h>
 
 /*
 C PrimerPlus
 Chapter12.5
 100个1-10的随机数  并以降序排列
 Chapter12.6
-统计随机数0-10  各个数字出现的次数  使用rand()  于 srand()函数
+统计随机数0-10  各个数字出现的次数  使用rand() 与 srand()函数
+
+time(NULL)  返回值为系统当前对应的 s 数
+
+srand(x) 设置rand函数种子为x
 
 
 */
@@ -18,6 +22,9 @@ void main(void)
     int arr[1000] = {0};
     int dataNum[10] = {0};  //统计0-9  各个数字出现的次数
     int i;
+    printf("time = %d\n",time(NULL));
+    srand(time(NULL));
+    printf("time = %d\n",time(NULL));
     for(int i=0;i<(sizeof(arr)/sizeof(int));i++)  {
         arr[i] =  (rand()%10);
     }
