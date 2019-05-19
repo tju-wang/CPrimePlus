@@ -28,6 +28,8 @@ void main(void)
     
 
 
+
+
 }
 
 char invertSort(int *data,int num)   //简单的冒泡排序  降序
