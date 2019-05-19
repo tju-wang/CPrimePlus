@@ -24,7 +24,6 @@ void main(void)
         printf("%d  ",arr[i]);
         if(i%8==7)
             printf("\r\n");
-        
     }
     
 
@@ -56,6 +55,5 @@ char invertSort(int *data,int num)   //简单的冒泡排序  降序
 
     }
     return 1;
-
 }
 
