@@ -1,9 +1,0 @@
-{
-    "files.associations": {
-        "kinematic.h": "c",
-        "solvefbi.h": "c",
-        "windows.h": "c",
-        "main.h": "c"
-    },
-    "C_Cpp.errorSquiggles": "Disabled"
-}
