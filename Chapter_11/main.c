@@ -21,12 +21,13 @@ char * s_gets(char *st,int n);
 extern void test_11_6(void);
 extern void test_11_8(void);
 extern void test_11_11(void);
-
+extern void test_11_13(void);
 int main (int argc,char *argv[])
 {
     //test_11_6();
     // test_11_8();
-    test_11_11();
+    // test_11_11();
+    test_11_13();
     return 0;
 }
 /*自定义字符串读取函数  
