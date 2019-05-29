@@ -20,11 +20,13 @@ char * s_gets(char *st,int n);
 
 extern void test_11_6(void);
 extern void test_11_8(void);
+extern void test_11_11(void);
 
 int main (int argc,char *argv[])
 {
     //test_11_6();
-    test_11_8();
+    // test_11_8();
+    test_11_11();
     return 0;
 }
 /*自定义字符串读取函数  
@@ -35,7 +37,7 @@ int main (int argc,char *argv[])
 char * s_gets(char *st,int n)
 {
     char * ret_val;
-    int i = 1;
+    int i = 0;
     ret_val = fgets(st,n,stdin);
 
     if(ret_val)
@@ -45,8 +47,11 @@ char * s_gets(char *st,int n)
         if(st[i]=='\n')     //替换换行符  为‘\0’
             st[i] = '\0';
         else
+        {
             while (getchar() != '\n')
                 continue;
+        }
+            
         
     }
     return ret_val;
