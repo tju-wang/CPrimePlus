@@ -3,9 +3,16 @@
 #include <stdlib.h>
 #include "main.h"
 
+
+extern void test_13_2(int argv, char *argc[]);
+
 /*
 CPrimerPlus  Chaper13
 Q2.实现文件拷贝程序 从命令行读取文件名
+*powershell 输入命令行的文件名只能是绝对路径  相对路径读取方式有待尝试
+powershell下  输入：  将 code_13_2.c文件拷贝至 file1.txt
+.\test.exe D:\CProgram\CPrimerPlus\Chapter_13\code_13_2.c D:\CProgram\CPrimerPlus\Chapter_13\flie1.txt
+
 
  */
 
@@ -14,18 +21,7 @@ Q2.实现文件拷贝程序 从命令行读取文件名
 int main(int argc, char *argv[])
 {
 
-    printf("%d  \n",argc);
-    if(argc != 3)
-    {
-        printf("Please input two files name.\n");
-    }
-    else
-    {
-        puts(argv[1]);
-        printf("2. \n");
-        puts(argv[2]);
-    }
-    
+    test_13_2(argc,argv);
     return 0;
 }
 
