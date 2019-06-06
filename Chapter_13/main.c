@@ -5,6 +5,7 @@
 
 
 extern void test_13_2(int argv, char *argc[]);
+extern void test_13_7(int argc, char *argv[]);
 
 /*
 CPrimerPlus  Chaper13
@@ -21,7 +22,8 @@ powershell下  输入：  将 code_13_2.c文件拷贝至 file1.txt
 int main(int argc, char *argv[])
 {
 
-    test_13_2(argc,argv);
+    // test_13_2(argc,argv);
+    test_13_7(argc,argv);
     return 0;
 }
 
