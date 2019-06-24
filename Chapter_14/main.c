@@ -7,7 +7,7 @@
 extern void test_14_1(int argv, char *argc[]);
 extern void test_14_2(int argv, char *argc[]);
 extern void test_14_5(int argv, char *argc[]);
-
+extern void test_14_8(int argv, char *argc[]);
 
 /*
 CPrimerPlus  Chaper14  结构和其他数据形式
@@ -21,7 +21,8 @@ int main(int argc, char *argv[])
 
     // test_14_1(argc,argv);
     // test_14_2(argc,argv);
-    test_14_5(argc,argv);
+    // test_14_5(argc,argv);
+    test_14_8(argc,argv);
     return 0;
 }
 
