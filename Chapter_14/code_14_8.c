@@ -60,7 +60,7 @@ void display(void)
      
     scanf("%c",&input);
     //下列两行 吃掉换行符  吃掉第一个字符以为的其他字符
-    
+    clearInputChar();
     menuAnalysis(input);
 
 }
@@ -69,11 +69,11 @@ void showEmptNum(struct member_t (*p))      //使用指针方式  非数组指�
 {
     printf("The number of empty seats.\n");
     static int k=0;
-    for(k=0; k<SEATSNUMBER; k++)
+    for(k=0; k<SEATSNUMBER; k++, p++)
     {
         if(p->state == 0)
         {
-            printf("%d Sort %d is empty.\n",k,(p++)->seatNumber);
+            printf("seat %d is empty.\n",(p)->seatNumber);
         }
     }
 }
@@ -82,17 +82,18 @@ void showEmptNumList(struct member_t (*p))
     printf("The number list of empty seats.\n");
     int count = 0;
     int emptList[SEATSNUMBER];
-    for(int k=0; k<SEATSNUMBER; k++)
+    for(int k=0; k<SEATSNUMBER; k++, p++)
     {
         if(p->state==0)
         {
             emptList[count] = p->seatNumber;
+            // printf("%d  %d\n",p->state,p->seatNumber);
             count++;
         }
     }
     for(int k=0; k<count; k++)
     {
-        printf("%d  ",emptList[count]);
+        printf("%d  ",emptList[k]);
     }
     printf("\n");
 }
@@ -100,6 +101,37 @@ void showEmptNumList(struct member_t (*p))
 //按照姓名  的首字母排序输出名字及座位信息
 void showInfoAlphaSort(struct member_t (*p))
 {
+    printf("The alphabetical list of seats.\n");
+    struct member_t temp_data[SEATSNUMBER];
+    struct member_t tem_stru;
+    int count = 0;
+    for(int k=0; k<SEATSNUMBER;k++, p++)
+    {
+        if(p->state==1)
+        {
+            temp_data[count++] = *p;       //结构体间初始化
+        }
+    }
+    //有乘客的结构体 被复制
+    tem_stru = temp_data[0];
+    printf("%d  \n",count);
+    for(int k=0; k<count; k++)
+    {
+        for(int t=k; t<count; t++)
+        {
+            if(temp_data[k].firstName[0] > temp_data[t].firstName[0])   //换序
+            {
+                tem_stru = temp_data[k];
+                temp_data[k] = temp_data[t];
+                temp_data[t] = tem_stru;
+            }
+        }
+    }
+    for (int i = 0; i < count; i++)
+    {
+        printf("%s %s seatNumber is %d \n",temp_data[i].firstName,temp_data[i].lastName,temp_data[i].seatNumber);
+    }
+
 
 }
 void assignCust(struct member_t (*p))
@@ -107,38 +139,68 @@ void assignCust(struct member_t (*p))
     char firstName[20];
     char lastName[20];
     int seatNumber;
-    printf("Input customer first name and last name.")
-    scanf("%s.%s",&firstName,&lastName);
+    char st = 0;
+    printf("Input customer first name and last name.\n");
+    scanf("%s %s %d",&firstName,&lastName,&seatNumber);
+    printf("%s  \n%s  \n",firstName,lastName);  //输入格式：  wang xing 8
+    printf("seat Number = %d\n",seatNumber);
     clearInputChar();
-    printf("Input the number of seat.")
-    scanf("%d",seatNumber);
-    clearInputChar();
-    for(int k=0; k<SEATSNUMBER; k++)
+    for(int k=0; k<SEATSNUMBER; k++, p++)
     {
         if(seatNumber==p->seatNumber)
         {
+            st = 1;
             if(p->state==0)
             {
                 p->state = 1;   //标记状态
-                strcpy(&p->firstName,&firstName);
-                strcpy(&p->lastName,&lastName);
+                strcpy(&(*p->firstName),firstName);
+                strcpy(&(*p->lastName),lastName);
             }
             else
             {
-                printf("This seat have be booked. Please Input again.")
+                printf("This seat have be booked. Please Input again.\n");
             } 
         }
     }
-
-
+    if(st==0)
+    {
+        printf("The seat number is not exist.\n");
+    }
 }
 void deleteSeatAssign(struct member_t (*p))
 {   
-    for(int k=0; k<SEATSNUMBER; k++)
+    int seatNumber;
+    char st = 0;
+    printf("Please insert the seat number you wang to delete.\n");
+    // clearInputChar();
+    // getchar();
+    scanf("%d",&seatNumber);
+    // printf("seatnumber = %d",seatNumber);
+    for(int k=0; k<SEATSNUMBER; k++,p++)
     {
-        
+        if(p->seatNumber == seatNumber)
+        {
+            st = 1;
+            if(p->state==1) 
+            {
+                p->state = 0;
+                for(int t=0; t<20; t++)
+                {
+                    p->firstName[t] = '\0';
+                    p->lastName[t] = '\0';
+                }
+                printf("Delete success.\n");
+            }
+            else
+            {
+                printf("The seat is empyt. Delete fail.\n");
+            }
+        } 
     }
-
+    if(st==0)
+    {
+        printf("The seat number is not exist.\n");
+    }
 }
 
 void menuAnalysis(char ch)
@@ -155,15 +217,15 @@ void menuAnalysis(char ch)
         }break;
         case 'c':
         {
-
+            showInfoAlphaSort(&data[0]);
         }break;
         case 'd':
         {
-
+            assignCust(&data[0]);
         }break;
         case 'e':
         {
-
+            deleteSeatAssign(&data[0]);
         }break;
         case 'f':
         {
@@ -171,7 +233,7 @@ void menuAnalysis(char ch)
         }break;
         default:
         {
-            printf("Input error.Again!");
+            printf("Input error.Again!\n");
         }break;
     }
 }
