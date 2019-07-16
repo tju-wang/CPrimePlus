@@ -4,13 +4,13 @@
 
 /*
 Q9  巨人航空公司座位预订系统  功能拓展
-
+中间间隔太久  暂且作废
  */
 
 #define SEATSNUMBER   12
 
 void display(void);
-void menuAnalysis(char ch);
+// void menuAnalysis(char ch);
 void clearInputChar(void);
 
 
@@ -52,7 +52,7 @@ void display(void)
     printf("f) Quit.\n");
      
     scanf("%c",&input);
-    //下列两行 吃掉换行符  吃掉第一个字符以为的其他字符
+    //下列两行 吃掉换行符  吃掉第一个字符以外的其他字符
     clearInputChar();
     menuAnalysis(input);
 

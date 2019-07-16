@@ -140,7 +140,7 @@ void assignCust(struct member_t (*p))
     char lastName[20];
     int seatNumber;
     char st = 0;
-    printf("Input customer first name and last name.\n");
+    printf("Input customer first name&last name and the seats number.\n");
     scanf("%s %s %d",&firstName,&lastName,&seatNumber);
     printf("%s  \n%s  \n",firstName,lastName);  //输入格式：  wang xing 8
     printf("seat Number = %d\n",seatNumber);
