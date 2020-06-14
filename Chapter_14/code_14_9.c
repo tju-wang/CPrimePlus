@@ -8,7 +8,7 @@ Q9  巨人航空公司座位预订系统  功能拓展
  */
 
 #define SEATSNUMBER   12
-
+  
 void display(void);
 // void menuAnalysis(char ch);
 void clearInputChar(void);

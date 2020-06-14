@@ -1,0 +1,8 @@
+name.firstName = Ren  name.lastName = yue
+grade[3] = 7.500000  7.000000  7.500000  ave = 7.333333  
+name.firstName = Bo  name.lastName = junxuan
+grade[3] = 7.000000  5.500000  7.000000  ave = 6.500000  
+name.firstName = Zhang  name.lastName = y
+grade[3] = 7.000000  7.500000  7.000000  ave = 7.166667  
+name.firstName = Zhang  name.lastName = baoy
+grade[3] = 6.500000  7.000000  6.500000  ave = 6.666667  
